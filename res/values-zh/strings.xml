@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LC-3 模拟器</string>
+    <string name="Simulator">模拟器</string>
+    <string name="Terminal">终端</string>
+    <string name="JumpTitle">跳转</string>
+    <string name="Running">运行中…</string>
+    <string name="Count">条指令</string>
+    <string name="Count0">0条指令</string><string name="Idle">空闲</string>
+    <string name="Quit">您确定要退出？</string>
+    <string name="Yes">确定</string>
+    <string name="No">取消</string>
+    <string name="SetBP">设置断点</string>
+    <string name="DelBP">取消断点</string>
+    <string name="Ready">完毕</string>
+    <string name="Help">←帮助信息</string>
+    <string name="Set_Value">更改值（十六进制）</string>
+    <string name="Set_PC">设为PC值</string>
+    <string name="Jump2">跳转地址</string>
+    <string name="InfoHead">您阅读过由Yale N. Patt和Sanjay J. Patel合著的《Introduction to Computing Systems: From Bits &amp; Gates to C &amp; Beyond》吗？本应用即为其中介绍的LC-3计算机的模拟器。本应用采用图标按钮，图例说明如下：</string>
+    <string name="HelpTitle">帮助信息</string>
+    <string name="Refresh">在“模拟器”和“终端”两个选项页中，它都会出现，其中在“模拟器”选项页中用于模拟器的重启；在“终端”选项页中则用于清屏。</string>
+    <string name="Run_Suspend">这两个按钮用于模拟器的“运行”与“暂停”。</string>
+    <string name="Open">这个按钮用于“打开”并加载LC-3程序（.obj格式），但您不能在模拟器“运行”状态下使用该键。</string>
+    <string name="Jump">下方显示的内存仅能显示连续共0x40条内存的值，您需要用这个按钮“跳转”到其它位置。</string>
+    <string name="Input">这是模拟器的“输入缓冲”，您可以在这里对模拟器进行输入，但若缓冲区内尚有字符未被处理，则您暂时不能输入。（上为输入缓冲区空，可以接受输入；下为输入缓冲区不空，暂时不能输入）</string>
+    <string name="Thanks">感谢您使用本应用。您的使用就是对我的支持，您的支持就是我的动力。</string>
+    <string name="InputBuffer">输入缓冲</string>
+
+</resources>
