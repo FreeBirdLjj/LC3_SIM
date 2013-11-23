@@ -457,12 +457,13 @@ public class LC_3 extends Activity{
 			final TextView tv = new TextView(this),
 						   tvd = new TextView(this);
 			if(addr==cpu.Reg[CPU.PC]){
-				tv.setText("->\t");
+				tv.setText("→");
 				tvp = tv;
 			}
 			else
 				tv.setText("\t");
 			tv.setTextColor(Color.BLUE);
+			tv.setTypeface(Typeface.MONOSPACE);
 			tv.setBackgroundColor(breakpoints.contains(addr)? Color.RED : Color.WHITE);
 			ll.addView(tv);
 			tvd.setText(String.format("x%04X\t\tx%04X\t\t%s", addr, cpu.mem[addr], cpu.disasm(addr)));
@@ -497,10 +498,10 @@ public class LC_3 extends Activity{
 						@Override
 						public void onClick(View v){
 							if((top<=cpu.Reg[CPU.PC])&&(cpu.Reg[CPU.PC]<top+0x0040))
-								tvp.setText("\t");
+								tvp.setText(" ");
 							cpu.Reg[CPU.PC] = addr;
 							Regs[CPU.PC].setText(String.format("x%04X", cpu.Reg[CPU.PC]));
-							tv.setText("->\t");
+							tv.setText("→");
 							tvp = tv;
 							dialog.dismiss();
 						}
