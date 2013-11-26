@@ -88,6 +88,7 @@ public class LC_3 extends Activity{
 		for(int i = 0; i<Regs.length; i++){
 			final int fi = i;
 			Regs[i].setOnClickListener(new OnClickListener(){
+				@Override
 				public void onClick(View v){
 					final Dialog dialog = new Dialog(LC_3.this);
 					dialog.setContentView(R.layout.regs);
@@ -207,6 +208,7 @@ public class LC_3 extends Activity{
 		}
 		RefreshDump();
 		((ImageButton)findViewById(R.id.Jump)).setOnClickListener(new OnClickListener(){
+			@Override
 			public void onClick(View v){
 				final Dialog dialog = new Dialog(LC_3.this);
 				dialog.setContentView(R.layout.jump);
@@ -506,7 +508,7 @@ public class LC_3 extends Activity{
 						@Override
 						public void onClick(View v){
 							if((top<=cpu.Reg[CPU.PC])&&(cpu.Reg[CPU.PC]<top+0x0040))
-								tvp.setText(" ");
+								tvp.setText("\t");
 							cpu.Reg[CPU.PC] = addr;
 							Regs[CPU.PC].setText(String.format("x%04X", cpu.Reg[CPU.PC]));
 							tv.setText("→");

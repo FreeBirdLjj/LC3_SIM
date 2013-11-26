@@ -7,8 +7,8 @@ import android.util.Log;
 public class CPU{
 
 	static final int PC = 8, IR = 9, PSR = 10,
-			GETC = 0x0020, OUT = 0x0021, PUTS = 0x0022, IN = 0x0023, PUTSP = 0x0024, HALT = 0x0025,
-			KBSR = 0xFE00, KBDR = 0xFE02, DSR = 0xFE04, DDR = 0xFE06, MCR = 0xFFFE;
+				     GETC = 0x0020, OUT = 0x0021, PUTS = 0x0022, IN = 0x0023, PUTSP = 0x0024, HALT = 0x0025,
+				     KBSR = 0xFE00, KBDR = 0xFE02, DSR = 0xFE04, DDR = 0xFE06, MCR = 0xFFFE;
 	int Reg[], mem[], exception;
 	boolean display, keyboard;
 	long clk;
@@ -21,7 +21,8 @@ public class CPU{
 	
 	public final void reinit(){
 		open(Environment.getExternalStorageDirectory()+"/.LC3/ROM.obj");
-		for(int i = 0; i<8; Reg[i++] = 0x0000);
+		for(int i = 0; i<8; i++)
+			Reg[i] = 0x0000;
 		Reg[PC] = 0x3000;
 		Reg[IR] = 0x0000;
 		Reg[PSR] = 0x8002;
