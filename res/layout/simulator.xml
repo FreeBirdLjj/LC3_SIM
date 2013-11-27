@@ -298,6 +298,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/Count0" />
 
         <TextView
@@ -305,7 +306,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="end"
             android:text="@string/Idle" />
+
     </LinearLayout>
 
 </LinearLayout>
