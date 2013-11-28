@@ -83,6 +83,7 @@ public class LC_3 extends Activity{
 		Regs[CPU.PSR] = (TextView)findViewById(R.id.textView18);
 		Regs[CC] = (TextView)findViewById(R.id.textView24);
 		dump = (LinearLayout)findViewById(R.id.mem);
+		final ImageButton input = (ImageButton)findViewById(R.id.Input);
 		Output.setMovementMethod(ScrollingMovementMethod.getInstance()) ;
 		top = cpu.Reg[CPU.PC];
 		for(int i = 0; i<Regs.length; i++){
@@ -260,8 +261,8 @@ public class LC_3 extends Activity{
 					cpu.mem[CPU.DSR] |= 0x8000;
 					break;
 				case INPUT:
-					((ImageButton)findViewById(R.id.Input)).setBackgroundResource(R.drawable.end);
-					((ImageButton)findViewById(R.id.Input)).setEnabled(true);
+					input.setBackgroundResource(R.drawable.end);
+					input.setEnabled(true);
 					break;
 				case PRINTOUT:
 					if(output.length()>0){
@@ -284,8 +285,9 @@ public class LC_3 extends Activity{
 			@Override
 			public void onClick(View v){
 				cpu.mem[CPU.MCR] = (cpu.mem[CPU.MCR]+0x8000)&0xFFFF;
+				final ImageButton ib = (ImageButton)v;
 				if((cpu.mem[CPU.MCR]&0x8000)>0){
-					((ImageButton)v).setBackgroundResource(R.drawable.suspend);
+					ib.setBackgroundResource(R.drawable.suspend);
 					((ImageButton)findViewById(R.id.Open)).setEnabled(false);
 					((TextView)findViewById(R.id.textView27)).setText(R.string.Running);
 					(new Thread(new Runnable(){
@@ -311,7 +313,7 @@ public class LC_3 extends Activity{
 					})).start();
 				}
 				else{
-					((ImageButton)v).setBackgroundResource(R.drawable.play);
+					ib.setBackgroundResource(R.drawable.play);
 					((ImageButton)findViewById(R.id.Open)).setEnabled(true);
 					((TextView)findViewById(R.id.textView26)).setText(cpu.clk+getString(R.string.Count));
 					((TextView)findViewById(R.id.textView27)).setText(R.string.Idle);
@@ -373,7 +375,7 @@ public class LC_3 extends Activity{
 				startActivityForResult((new Intent()).setType("File/*").setAction(Intent.ACTION_GET_CONTENT), 1);
 			}
 		});
-		((ImageButton)findViewById(R.id.Input)).setOnClickListener(new OnClickListener(){
+		input.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v){
 				final Dialog dialog = new Dialog(LC_3.this);
@@ -385,8 +387,9 @@ public class LC_3 extends Activity{
 					public void onClick(View v){
 						final String str = ((EditText)dialog.findViewById(R.id.Text)).getText().toString();
 						if(str.length()>0){
-							((ImageButton)v).setBackgroundResource(R.drawable.spec1);
-							((ImageButton)v).setEnabled(false);
+							final ImageButton ib = (ImageButton)v;
+							ib.setBackgroundResource(R.drawable.spec1);
+							ib.setEnabled(false);
 							(new Thread(new Runnable(){
 								@Override
 								public void run(){
