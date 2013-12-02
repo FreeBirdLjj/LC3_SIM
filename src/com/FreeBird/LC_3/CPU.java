@@ -7,8 +7,8 @@ import android.util.Log;
 public class CPU{
 
 	static final int PC = 8, IR = 9, PSR = 10,
-			GETC = 0x0020, OUT = 0x0021, PUTS = 0x0022, IN = 0x0023, PUTSP = 0x0024, HALT = 0x0025,
-			KBSR = 0xFE00, KBDR = 0xFE02, DSR = 0xFE04, DDR = 0xFE06, MCR = 0xFFFE;
+				     GETC = 0x0020, OUT = 0x0021, PUTS = 0x0022, IN = 0x0023, PUTSP = 0x0024, HALT = 0x0025,
+				     KBSR = 0xFE00, KBDR = 0xFE02, DSR = 0xFE04, DDR = 0xFE06, MCR = 0xFFFE;
 	int Reg[], mem[], exception;
 	boolean display, keyboard;
 	long clk;
@@ -21,7 +21,8 @@ public class CPU{
 	
 	public final void reinit(){
 		open(Environment.getExternalStorageDirectory()+"/.LC3/ROM.obj");
-		for(int i = 0; i<8; Reg[i++] = 0x0000);
+		for(int i = 0; i<8; i++)
+			Reg[i] = 0x0000;
 		Reg[PC] = 0x3000;
 		Reg[IR] = 0x0000;
 		Reg[PSR] = 0x8002;
@@ -120,7 +121,16 @@ public class CPU{
 	public String disasm(int i){
 		switch(mem[i]>>12){
 		case 0x0:
-			return (mem[i]&0x0E00)>0? String.format("BR%c%c%c x%04X", (mem[i]&0x0800)>0? 'N' : '\0', (mem[i]&0x0400)>0? 'Z' : '\0', (mem[i]&0x0200)>0? 'P' : '\0', (i+(((mem[i]&0x01FF)-0x0100)&0x01FF)-0x00FF)&0xFFFF) : "NOP";
+			switch((mem[i]>>9)&0x0007){
+			case 0:
+				return "NOP";
+			case 0x1:
+				return String.format("BRP x%04X", (i+(((mem[i]&0x01FF)-0x0100)&0x01FF)-0x00FF)&0xFFFF);
+			case 0x2:
+				return String.format("BRZ x%04X", (i+(((mem[i]&0x01FF)-0x0100)&0x01FF)-0x00FF)&0xFFFF);
+			case 0x4:
+				return String.format("BRN x%04X", (i+(((mem[i]&0x01FF)-0x0100)&0x01FF)-0x00FF)&0xFFFF);
+			}
 		case 0x1:
 			return String.format("ADD R%d, R%d, %s", (mem[i]>>9)&0x0007, (mem[i]>>6)&0x0007, (mem[i]&0x0020)>0? String.format("#%d", (((mem[i]&0x001F)-0x0010)&0x001F)-0x0010) : String.format("R%d", mem[i]&0x0007));
 		case 0x2:
@@ -177,7 +187,8 @@ public class CPU{
 			fis.read(b);
 			fis.close();
 			Reg[PC] = ((((int)b[0])&0x00FF)<<8)+(b[1]&0x00FF);
-			for(int i = 0; ++i<b.length>>1; mem[(Reg[PC]+i-1)&0xFFFF] = ((((int)b[i<<1])&0x00FF)<<8)+(b[(i<<1)+1]&0x00FF));
+			for(int i = 1; i<(b.length>>1); i++)
+				mem[(Reg[PC]+i-1)&0xFFFF] = ((((int)b[i<<1])&0x00FF)<<8)+(b[(i<<1)+1]&0x00FF);
 		}
 		catch(Exception e){
 			e.printStackTrace();
