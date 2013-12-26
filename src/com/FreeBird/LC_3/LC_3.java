@@ -31,7 +31,7 @@ public class LC_3 extends Activity{
 
 	final int STOP = 0x101, PRINT = 0x102, PRINTOUT = 0x103, INPUT = 0x104, freshTime = 100, CC = 11;
 	int top;
-	boolean tinput;
+	volatile boolean tinput;
 	CPU cpu;
 	LinearLayout dump;
 	TextView Regs[], tvp, Output;
