@@ -109,10 +109,8 @@ public class LC_3 extends Activity{
 							@Override
 							public void onClick(View v){
 								final String str = ((EditText)dialog.findViewById(R.id.setValue)).getText().toString().toUpperCase();
-								if(str.length()>0){
-									cpu.Reg[fi] = 0x0000;
-									for(int j = 0; j<str.length(); j++)
-										cpu.Reg[fi] = Hex(str.charAt(j))+(cpu.Reg[fi]<<4);
+								if(str.length()==0){
+									cpu.Reg[fi] = Str2int(str);
 									Regs[fi].setText(String.format("x%04X", cpu.Reg[fi]));
 								}
 								dialog.dismiss();
@@ -126,9 +124,7 @@ public class LC_3 extends Activity{
 							public void onClick(View v){
 								final String str = ((EditText)dialog.findViewById(R.id.setValue)).getText().toString().toUpperCase();
 								if(str.length()>0){
-									cpu.Reg[fi] = 0x0000;
-									for(int j = 0; j<str.length(); j++)
-										cpu.Reg[fi] = Hex(str.charAt(j))+(cpu.Reg[fi]<<4);
+									cpu.Reg[fi] = Str2int(str);
 									Regs[fi].setText(String.format("x%04X", cpu.Reg[fi]));
 									RefreshDump();
 								}
@@ -143,9 +139,7 @@ public class LC_3 extends Activity{
 							public void onClick(View v){
 								final String str = ((EditText)dialog.findViewById(R.id.setValue)).getText().toString().toUpperCase();
 								if(str.length()>0){
-									cpu.Reg[fi] = 0x0000;
-									for(int j = 0; j<str.length(); j++)
-										cpu.Reg[fi] = Hex(str.charAt(j))+(cpu.Reg[fi]<<4);
+									cpu.Reg[fi] = Str2int(str);
 									Regs[fi].setText(String.format("x%04X", cpu.Reg[fi]));
 								}
 								dialog.dismiss();
@@ -159,9 +153,7 @@ public class LC_3 extends Activity{
 							public void onClick(View v){
 								final String str = ((EditText)dialog.findViewById(R.id.setValue)).getText().toString().toUpperCase();
 								if(str.length()>0){
-									cpu.Reg[fi] = 0x0000;
-									for(int j = 0; j<str.length(); j++)
-										cpu.Reg[fi] = Hex(str.charAt(j))+(cpu.Reg[fi]<<4);
+									cpu.Reg[fi] = Str2int(str);
 									Regs[fi].setText(String.format("x%04X", cpu.Reg[fi]));
 									switch(cpu.Reg[CPU.PSR]&0x0007){
 									case 0x0001:
@@ -220,9 +212,7 @@ public class LC_3 extends Activity{
 					public void onClick(View v){
 						final String str = ((EditText)dialog.findViewById(R.id.jmpto)).getText().toString().toUpperCase();
 						if(str.length()>0){
-							int add = 0x0000;
-							for(int j = 0; j<str.length(); j++)
-								add = (add<<4)+Hex(str.charAt(j));
+							int add = Str2int(str);
 							top = Math.min(add, 0xFFC0);
 							RefreshDump();
 						}
@@ -358,7 +348,7 @@ public class LC_3 extends Activity{
 					break;
 				}
 				Output.setText("");
-				top = 0x3000;
+				top = cpu.Reg[cpu.PC];
 				RefreshDump();
 				((ImageButton)findViewById(R.id.Open)).setEnabled(true);
 			}
@@ -460,7 +450,14 @@ public class LC_3 extends Activity{
 	int Hex(char ch){
 		return (ch>='0')&&(ch<='F')&&((ch<='9')||(ch>='A'))? ch-'0'-(ch>>6)*7 : 0;
 	}
-	
+
+	int Str2int(String s){
+		int result = 0;
+		for(int j = 0; j<s.length(); j++)
+			result = (result<<4)+Hex(s.charAt(j));
+		return result;
+	}
+
 	public final void RefreshDump(){
 		dump.removeAllViews();
 		for(int i = 0; i<0x0040; i++){
@@ -524,9 +521,7 @@ public class LC_3 extends Activity{
 						public void onClick(View v){
 							final String str = ((EditText)dialog.findViewById(R.id.setValue)).getText().toString().toUpperCase();
 							if(str.length()>0){
-								cpu.mem[addr] = 0x0000;
-								for(int j = 0; j<str.length(); j++)
-									cpu.mem[addr] = Hex(str.charAt(j))+(cpu.mem[addr]<<4);
+								cpu.mem[addr] = Str2int(str);
 								cpu.mem[addr] &= 0xFFFF;
 								tvd.setText(String.format("x%04X\t\tx%04X\t\t%s", addr, cpu.mem[addr], cpu.disasm(addr)));
 							}
