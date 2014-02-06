@@ -14,7 +14,7 @@ I want the simulator can run on all the android devices, including x86-based and
 
 # I18N & L10N
 
-Just as any other android project, add a folder named `values-LANG` with strings.xml inside in res/ and then send PR to me. res/values-zh is an example.
+Just as any other android project, add a folder named `values-LANG` with strings.xml inside in `res/` and then send PR to me. res/values-zh is an example.
 
 - - -
 
