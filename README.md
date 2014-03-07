@@ -2,7 +2,7 @@
 
 A LC-3 simulator of Android edition.
 
-[Here](en.wikipedia.org/wiki/LC-3) is an introduction of LC-3.
+[Here](http://en.wikipedia.org/wiki/LC-3) is an introduction of LC-3.
 
 - - -
 
