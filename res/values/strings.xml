@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LC-3 SIM</string>
-    <string name="Simulator">Simulator</string>
-    <string name="Terminal">Terminal</string>
-    <string name="JumpTitle">Jump</string>
-    <string name="Running">Running</string>
-    <string name="Count"> instruction(s) excuted</string>
-    <string name="Count0">0 instruction(s) excuted</string>
-    <string name="Idle">Idle</string>
-    <string name="Quit">Are you sure to quit?</string>
-    <string name="Yes">Yes</string>
-    <string name="No">No</string>
-    <string name="SetBP">Toggle Breakpoint</string>
-    <string name="DelBP">Toggle Breakpoint</string>
-    <string name="Ready">Ready</string>
-    <string name="Help">←Help</string>
-    <string name="Set_Value">Set Value (HEX)</string>
-    <string name="Set_PC">Set PC here</string>
-    <string name="Jump2">Jump to</string>
-    <string name="InfoHead">Have you read <i>Introduction to Computing Systems: From Bits &amp; Gates to C &amp; Beyond</i> written by Yale N. Patt &amp; Sanjay J. Patel? This app is the simulation of the LC-3 computer. This app uses imagebuttons, and the legends are as follow:</string>
-    <string name="HelpTitle">Help</string>
-    <string name="Refresh">It is seen in the both SIMULATOR &amp; TERMINAL tabs. It is used to reboot the simulator in the former and to clear screen in the latter.</string>
-    <string name="Run_Suspend">These two buttons are used to RUN and SUSPEND the simulator.</string>
-    <string name="Open">it is used to OPEN and load LC-3 program (in .obj format), and cannot be used while the simulator is RUNNING.</string>
-    <string name="Jump">The memdump can only continuously display 0x40 Memory Unit in total, so you need this button to JUMP TO where you want.</string>
-    <string name="Input">There is a input buffer in the simulator, and you can input in it. You can only input while the input buffer is empty. (The upper state means the input buffer is empty and you can input, the lowwer means opposite)</string>
-    <string name="Thanks">Thanks for using this app. You support me by using my app(s), and your support is my impetus.</string>
-    <string name="InputBuffer">Input Buffer</string>
+    <string name = "app_name">LC-3 SIM</string>
+    <string name = "Simulator">Simulator</string>
+    <string name = "Terminal">Terminal</string>
+    <string name = "JumpTitle">Jump</string>
+    <string name = "Running">Running</string>
+    <string name = "Count"> instruction(s) excuted</string>
+    <string name = "Count0">0 instruction(s) excuted</string>
+    <string name = "Idle">Idle</string>
+    <string name = "Quit">Are you sure to quit?</string>
+    <string name = "Yes">Yes</string>
+    <string name = "No">No</string>
+    <string name = "SetBP">Toggle Breakpoint</string>
+    <string name = "DelBP">Toggle Breakpoint</string>
+    <string name = "Ready">Ready</string>
+    <string name = "Help">←Help</string>
+    <string name = "Set_Value">Set Value (HEX)</string>
+    <string name = "Set_PC">Set PC here</string>
+    <string name = "Jump2">Jump to</string>
+    <string name = "InfoHead">Have you read <i>Introduction to Computing Systems: From Bits &amp; Gates to C &amp; Beyond</i> written by Yale N. Patt &amp; Sanjay J. Patel? This app is the simulation of the LC-3 computer. This app uses imagebuttons, and the legends are as follow:</string>
+    <string name = "HelpTitle">Help</string>
+    <string name = "Refresh">It is seen in the both SIMULATOR &amp; TERMINAL tabs. It is used to reboot the simulator in the former and to clear screen in the latter.</string>
+    <string name = "Run_Suspend">These two buttons are used to RUN and SUSPEND the simulator.</string>
+    <string name = "Open">it is used to OPEN and load LC-3 program (in .obj format), and cannot be used while the simulator is RUNNING.</string>
+    <string name = "Jump">The memdump can only continuously display 0x40 Memory Unit in total, so you need this button to JUMP TO where you want.</string>
+    <string name = "Input">There is a input buffer in the simulator, and you can input in it. You can only input while the input buffer is empty. (The upper state means the input buffer is empty and you can input, the lowwer means opposite)</string>
+    <string name = "Thanks">Thanks for using this app. You support me by using my app(s), and your support is my impetus.</string>
+    <string name = "About">This is a free software, and you can find it at <a href = "https://github.com/FreeBirdLjj/LC3_SIM">https://github.com/FreeBirdLjj/LC3_SIM</a> to do anything you can do with any other GitHub repo.</string>
+    <string name = "InputBuffer">Input Buffer</string>
     
 </resources>
